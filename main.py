@@ -2,7 +2,7 @@ import os
 
 os.system("pip install docker flask")
 
-import docker, time, webbrowser, threading
+import docker, time, webbrowser, subprocess
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -35,14 +35,10 @@ def resetContainer():
         ports={"3000": "3000"},
     )
 
-def openPreview():
-    os.system("gp preview http://localhost:8000/embed")
-
-
 @app.route("/")
 def index():
     return "home"
 
 if __name__ == "__main__":
-    thread = threading.Thread()
+    subprocess.Popen(["gp", "preview", "http://localhost:8000/embed"])
     app.run(port=8000)
