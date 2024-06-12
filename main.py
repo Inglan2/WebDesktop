@@ -37,7 +37,7 @@ def resetContainer():
 
 @app.route("/")
 def index():
-    return "home"
+    return render_template("index.html")
 
 @app.route("/embed")
 def embed():
@@ -53,10 +53,9 @@ def embed():
             font-size: 30px;
             outline: 0;
             border: 0;
-            cursor: pointer;
         }
     </style>
-    <button onclick="window.open('/')">Open</button>
+    <a href="/" target="_blank">Drag to the tab bar</a>
     """
 
 if __name__ == "__main__":
