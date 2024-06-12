@@ -39,6 +39,26 @@ def resetContainer():
 def index():
     return "home"
 
+@app.route("/embed")
+def embed():
+    return """
+    <style>
+        * {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            background-color: #1F1F1F;
+            color: white;
+            font-size: 30px;
+            outline: 0;
+            border: 0;
+            cursor: pointer;
+        }
+    </style>
+    <button>Open</button>
+    """
+
 if __name__ == "__main__":
-    subprocess.Popen(["gp", "preview", "http://localhost:8000/embed"])
+    subprocess.Popen(["sleep 5 && gp preview http://localhost:8000/embed"], shell=True)
     app.run(port=8000)
