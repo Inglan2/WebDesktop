@@ -56,7 +56,7 @@ def embed():
             cursor: pointer;
         }
     </style>
-    <button>Open</button>
+    <button onclick="window.open('/')">Open</button>
     """
 
 if __name__ == "__main__":
