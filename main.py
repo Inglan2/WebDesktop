@@ -67,6 +67,11 @@ def resetContainer():
         ports={"3000": "3000"},
     )
 
+print("Installing container")
+
+if not os.path.exists("/workspace/WebDesktop/files"):
+    resetContainer()
+
 @app.route("/")
 def index():
     return render_template("index.html")

@@ -4,8 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebDesktop</title>
+    <style>
+        body, html {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-color: #111;
+            display: flex;
+            flex-direction: row;
+        }
+
+        iframe {
+            flex-grow: 1;
+        }
+    </style>
 </head>
 <body>
-    
+    <div></div>
+    <iframe id="frame" frameborder="0"></iframe>
+    <script>
+        document.getElementById("frame").src = location.href.replace("6969-", "3000-")
+    </script>
 </body>
 </html>
