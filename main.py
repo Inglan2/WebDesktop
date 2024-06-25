@@ -47,6 +47,9 @@ client.images.pull("lscr.io/linuxserver/webtop:ubuntu-kde")
 def resetContainer():
     try:
         client.containers.list()[0].stop()
+    except:
+        pass
+    try:
         client.containers.list()[0].remove()
     except:
         pass
@@ -77,6 +80,7 @@ def index():
     return render_template("index.html")
 
 if __name__ == "__main__":
+    resetContainer()
     serverthread.start()
     txapp = WebDesktop()
     txapp.run()
