@@ -9,7 +9,7 @@ cls()
 
 print("Installing...")
 
-os.system("pip install docker flask textual > /dev/null")
+os.system("pip install docker flask textual pyloaders > /dev/null")
 
 print("Installed")
 print("Importing...")
@@ -18,6 +18,7 @@ import docker, time, webbrowser, subprocess, threading
 from flask import Flask, render_template
 from textual.app import App, ComposeResult
 from textual.widgets import Header, Footer, Button, Label
+from loaders import BarLoader
 
 print("Imported")
 print("Create server")
@@ -68,10 +69,12 @@ cls()
 
 print("Pull container")
 print("This may take a while")
+loader = BarLoader(complete_text="Pulled container")
+loader.start()
 
 client.images.pull("lscr.io/linuxserver/webtop:ubuntu-kde")
 
-print("Container pulled")
+loader.stop()
 
 
 def resetContainer():
