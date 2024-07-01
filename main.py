@@ -1,22 +1,37 @@
 import os
 
-os.system("clear")
+
+def cls():
+    os.system("clear")
+
+
+cls()
 
 print("Installing...")
 
-os.system("pip install docker flask textual")
+os.system("pip install docker flask textual > /dev/null")
+
+print("Installed")
+print("Importing...")
 
 import docker, time, webbrowser, subprocess, threading
 from flask import Flask, render_template
 from textual.app import App, ComposeResult
 from textual.widgets import Header, Footer, Button, Label
 
+print("Imported")
+print("Create server")
+
 app = Flask(__name__)
 
 serverthread = threading.Thread(
     target=lambda: app.run(host="0.0.0.0", port=6969, debug=False, use_reloader=False)
 )
+
 serverthread.daemon = True
+
+print("Server created")
+print("Create Textual App")
 
 
 class WebDesktop(App):
@@ -44,9 +59,19 @@ class WebDesktop(App):
         yield Button("Stop", id="stop", variant="error")
 
 
+print("Created Textual App")
+print("Init docker")
+
 client = docker.from_env()
 
+cls()
+
+print("Pull container")
+print("This may take a while")
+
 client.images.pull("lscr.io/linuxserver/webtop:ubuntu-kde")
+
+print("Container pulled")
 
 
 def resetContainer():
