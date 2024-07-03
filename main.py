@@ -80,7 +80,7 @@ client.images.pull("lscr.io/linuxserver/webtop:ubuntu-kde")
 loader.stop()
 
 
-def resetContainer():
+def stopContainer():
     try:
         client.containers.list()[0].stop()
     except:
@@ -90,6 +90,9 @@ def resetContainer():
     except:
         pass
     client.containers.prune()
+
+
+def startContainer():
     client.containers.run(
         "lscr.io/linuxserver/webtop:ubuntu-kde",
         detach=True,
@@ -107,10 +110,10 @@ def resetContainer():
     )
 
 
-print("Installing container")
+print("Starting container")
 
-if not os.path.exists("/workspace/WebDesktop/files"):
-    resetContainer()
+stopContainer()
+startContainer()
 
 
 @app.route("/")
