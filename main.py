@@ -107,6 +107,10 @@ def startContainer():
     )
 
 
+def resetContainer():
+    os.system("sudo rm -rf files")
+
+
 print("Starting container")
 
 
@@ -116,6 +120,7 @@ def index():
 
 
 if __name__ == "__main__":
+    resetContainer()
     stopContainer()
     startContainer()
     serverthread.start()
