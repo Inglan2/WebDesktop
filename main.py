@@ -54,13 +54,10 @@ class WebDesktop(App):
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "open":
             webbrowser.open("http://localhost:6969")
-        elif event.button.id == "stop":
-            exit()
 
     def compose(self) -> ComposeResult:
         yield Label("WebDesktop is running")
         yield Button("Open", id="open", variant="success", classes="bigbtn")
-        yield Button("Stop", id="stop", variant="error", classes="bigbtn")
 
 
 print("Created Textual App")
@@ -112,9 +109,6 @@ def startContainer():
 
 print("Starting container")
 
-stopContainer()
-startContainer()
-
 
 @app.route("/")
 def index():
@@ -122,7 +116,8 @@ def index():
 
 
 if __name__ == "__main__":
-    resetContainer()
+    stopContainer()
+    startContainer()
     serverthread.start()
     txapp = WebDesktop()
     txapp.run()
