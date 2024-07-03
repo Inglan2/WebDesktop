@@ -46,6 +46,9 @@ class WebDesktop(App):
         align: center middle;
         width: 69
     }
+    .smallbtn {
+        width: 1;
+    }
     """
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
