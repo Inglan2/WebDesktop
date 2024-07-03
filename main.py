@@ -41,7 +41,7 @@ class WebDesktop(App):
         align: center middle;
     }
 
-    * {
+    .bigbtn {
         margin: 1;
         align: center middle;
         width: 69
@@ -56,8 +56,8 @@ class WebDesktop(App):
 
     def compose(self) -> ComposeResult:
         yield Label("WebDesktop is running")
-        yield Button("Open", id="open", variant="success")
-        yield Button("Stop", id="stop", variant="error")
+        yield Button("Open", id="open", variant="success", classes="bigbtn")
+        yield Button("Stop", id="stop", variant="error", classes="bigbtn")
 
 
 print("Created Textual App")
@@ -86,7 +86,7 @@ def resetContainer():
         client.containers.list()[0].remove()
     except:
         pass
-
+    client.containers.prune()
     client.containers.run(
         "lscr.io/linuxserver/webtop:ubuntu-kde",
         detach=True,
