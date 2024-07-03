@@ -119,6 +119,27 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/restart")
+def restart():
+    stopContainer()
+    startContainer()
+    return ":)"
+
+
+@app.route("/reset")
+def reset():
+    stopContainer()
+    resetContainer()
+    startContainer()
+    return ":)"
+
+
+@app.route("/installappstore")
+def appstore():
+    client.containers.list()[0].exec_run("proot-apps install gui", stdout=True)
+    return ":)"
+
+
 if __name__ == "__main__":
     resetContainer()
     stopContainer()

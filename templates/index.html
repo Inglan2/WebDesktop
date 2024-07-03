@@ -1,33 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WebDesktop</title>
     <style>
-        body, html {
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            height: 100%;
-        }
+      * {
+        box-sizing: border-box;
+      }
+      h1 {
+        margin: 0;
+      }
+      body,
+      html {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
 
-        body {
-            background-color: #111;
-            display: flex;
-            flex-direction: row;
-        }
+      body {
+        background-color: #111;
+        display: flex;
+        flex-direction: row;
+      }
 
-        iframe {
-            flex-grow: 1;
-        }
+      iframe {
+        flex-grow: 1;
+      }
+
+      #controls {
+        background-color: #222;
+        position: fixed;
+        top: 10px;
+        right: 0;
+        height: calc(100% - 20px);
+        width: 300px;
+        border-radius: 10px 0 0 10px;
+        transform: translate(calc(100% - 1px));
+        transition-duration: 300ms;
+        transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+        padding: 10px;
+        color: white;
+      }
+
+      #controls:hover {
+        transform: translate(0);
+      }
     </style>
-</head>
-<body>
-    <div></div>
+  </head>
+  <body>
+    <div id="controls">
+      <h1>WebDesktop</h1>
+    </div>
     <iframe id="frame" frameborder="0"></iframe>
     <script>
-        document.getElementById("frame").src = location.href.replace("6969-", "3000-")
+      document.getElementById("frame").src = location.href.replace(
+        "6969-",
+        "3000-"
+      );
     </script>
-</body>
+  </body>
 </html>
