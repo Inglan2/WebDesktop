@@ -136,7 +136,9 @@ def reset():
 
 @app.route("/installappstore")
 def appstore():
-    client.containers.list()[0].exec_run("proot-apps install gui", stdout=True)
+    client.containers.list()[0].exec_run(
+        "/config/.local/bin/proot-apps install gui", user="avc"
+    )
     return ":)"
 
 
