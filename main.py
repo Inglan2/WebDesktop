@@ -146,7 +146,7 @@ def appstore():
 
 
 if __name__ == "__main__":
-    resetContainer()
+    # resetContainer()
     stopContainer()
     startContainer()
     serverthread.start()
